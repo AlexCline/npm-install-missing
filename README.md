@@ -28,6 +28,15 @@ This module depends on the following modules:
 * npm
 
 
+Testing
+-------
+To install the devDependencies and run the test framework:
+
+    cd npm-install-missing
+    npm install
+    npm test
+
+
 Support
 -------
 Please file tickets and issues using [GitHub Issues](https://github.com/AlexCline/npm-install-missing/issues)
