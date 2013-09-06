@@ -3,6 +3,8 @@ npm-install-missing
 
 An NPM module to reinstall missing dependencies.
 
+[![Build Status](https://travis-ci.org/AlexCline/npm-install-missing.png?branch=master)](https://travis-ci.org/AlexCline/npm-install-missing)
+
 
 Installation
 ------------
