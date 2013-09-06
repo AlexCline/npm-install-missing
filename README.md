@@ -5,6 +5,12 @@ An NPM module to reinstall missing dependencies.
 
 [![Build Status](https://travis-ci.org/AlexCline/npm-install-missing.png?branch=master)](https://travis-ci.org/AlexCline/npm-install-missing)
 
+I created this module after working on a project where deployments were failing due to missing module dependencies.  An `npm install` would fail to install the required dependencies for an unknown reason and without error.  Since `npm install` succeeds without error, there wasn't a way to tell if the dependency installation failed.
+
+When running `npm install` for a second time on a project, npm will check the first level of modules to ensure they're installed, but not traverse the dependency tree to ensure all sub-module dependencies are installed.  You can run `npm outdated` to check if modules are missing but npm won't install them for you.
+
+This module combines `npm outdated` and `npm install` to install all missing dependencies within the dependency tree.
+
 
 Installation
 ------------
