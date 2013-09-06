@@ -26,8 +26,7 @@ NpmRetryInstall.installModule = function(module, cb){
   npm.load(function(err){
     if (err) throw err;
     npm.commands.install([module[0] + '@' + module[1]], function(err, data){
-      if (err) throw err;
-      cb(data);
+      cb(err, module);
     });
   });
 };
@@ -36,10 +35,13 @@ NpmRetryInstall.init = function(cb){
   var msg = [];
   NpmRetryInstall.getMissing(process.cwd(), function(data){
     if(data.length > 0){
-      msg.push('The following modules are missing and will be installed:');
+      console.log(data);
       
       async.map(data, NpmRetryInstall.installModule, function(err, result){
-        return cb(result);
+        result.forEach(function(module){
+          msg.push(module[0] + "@" + module[1]);
+        });
+        return cb("Successfully installed: " + msg.join(', '));
       });
     } else {
       cb('No modules seem to be missing.  Huzzah!');

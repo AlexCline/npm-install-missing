@@ -71,7 +71,7 @@ describe('npm-install-missing', function(){
 
   describe('#installModule', function(){
     it('should install the test_dependency module', function(done){
-      npm_install_missing.installModule(missing_mods[0], function(result){
+      npm_install_missing.installModule(missing_mods[0], function(err, result){
         assert.that(result.length, is.greaterThan(1));
         done();
       });
@@ -100,8 +100,8 @@ describe('npm-install-missing', function(){
 
   describe('#installModule', function(){
     it('should install the missing module dependency', function(done){
-      npm_install_missing.installModule(missing_mods[0], function(result){
-        assert.that(result.length, is.equalTo(1));
+      npm_install_missing.installModule(missing_mods[0], function(err, result){
+        assert.that(result[0], is.equalTo('pause'));
         done();
       });
     });
