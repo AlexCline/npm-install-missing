@@ -3,5 +3,5 @@
 var npm_install_missing = require('../');
 
 npm_install_missing.init(function(response){
-  console.log(response);
+  console.log("npm-install-missing: " + response);
 });

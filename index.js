@@ -7,7 +7,7 @@ function NpmRetryInstall(options) {
   options = options || {};
 };
 
-NpmRetryInstall.getMissing = function(cb){
+NpmRetryInstall.getMissing = function(path, cb){
   npm.load(function(err){
     if (err) throw err;
     npm.commands.outdated(function(err, data){
@@ -34,7 +34,7 @@ NpmRetryInstall.installModule = function(module, cb){
 
 NpmRetryInstall.init = function(cb){
   var msg = [];
-  NpmRetryInstall.getMissing(function(data){
+  NpmRetryInstall.getMissing(process.cwd(), function(data){
     if(data.length > 0){
       msg.push('The following modules are missing and will be installed:');
       
@@ -42,7 +42,7 @@ NpmRetryInstall.init = function(cb){
         return cb(result);
       });
     } else {
-      msg.push('No modules seem to be missing. Yay!');
+      cb('No modules seem to be missing.  Huzzah!');
     }
   });
 };

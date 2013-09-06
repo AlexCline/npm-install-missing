@@ -6,8 +6,16 @@
     "async": "0.*",
     "npm": ">=1.2.10"
   },
+  "bin": {
+    "npm-install-missing": "./bin/npm-install-missing"
+  },
   "devDependencies": {
-    "mocha": "1.*"
+    "mkdirp": "",
+    "mocha": "1.*",
+    "node-assertthat": ""
+  },
+  "engines": {
+    "node": ">= 0.9.x"
   },
   "main": "index.js",
   "scripts": {
