@@ -1,6 +1,6 @@
 {
   "name": "npm-install-missing",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "This module will attempt to reinstall any missing dependencies.  It can be called via the command line or used programmatically.",
   "dependencies": {
     "async": "0.*",
