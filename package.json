@@ -1,6 +1,6 @@
 {
   "name": "npm-install-missing",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "This module will attempt to reinstall any missing dependencies.  It can be called via the command line or used programmatically.",
   "dependencies": {
     "async": "0.*",
@@ -34,7 +34,7 @@
   ],
   "preferGlobal": true,
   "author": "Alex Cline <alex.cline@gmail.com>",
-  "license": "BSD",
+  "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/AlexCline/npm-install-missing/issues"
   }
