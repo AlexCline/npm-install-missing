@@ -32,7 +32,6 @@
     "retry",
     "module"
   ],
-  "private": true,
   "preferGlobal": true,
   "author": "Alex Cline <alex.cline@gmail.com>",
   "license": "BSD",
