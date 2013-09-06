@@ -2,9 +2,16 @@
   "name": "npm-install-missing",
   "version": "0.1.0",
   "description": "This module will attempt to reinstall any missing dependencies.  It can be called via the command line or used programmatically.",
+  "dependencies": {
+    "async": "0.*",
+    "npm": ">=1.2.10"
+  },
+  "devDependencies": {
+    "mocha": "1.*"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
@@ -17,6 +24,8 @@
     "retry",
     "module"
   ],
+  "private": true,
+  "preferGlobal": true,
   "author": "Alex Cline <alex.cline@gmail.com>",
   "license": "BSD",
   "bugs": {
