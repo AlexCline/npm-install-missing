@@ -117,3 +117,56 @@ describe('npm-install-missing', function(){
   });
 
 });
+
+
+describe('npm-install-missing', function(){
+  this.timeout(10000);
+  before(function(done){
+    fake_package_json.dependencies = { "npm-install-missing":"git+https://github.com/AlexCline/npm-install-missing.git" };
+    mkdirp(working_dir, function(err){
+      if (err) throw err;
+      try {
+        process.chdir(working_dir);
+        fs.writeFile(working_dir + '/package.json', JSON.stringify(fake_package_json, null, 2), function(err){
+          if (err) throw err;
+          exec('rm -rf ' + working_dir + '/node_modules', function(err, result){
+            if (err) throw err;
+            done();
+          });
+        });
+      }
+      catch (err) {
+        console.log('chdir: ' + err);
+      }
+    });
+  });
+
+  after(function(done){
+    fake_package_json.dependencies = test_dependency;
+    exec('rm -rf ' + working_dir, function(err, result){
+      if(err) throw err;
+      done();
+    });
+  });
+
+  describe('#getMissing()', function(){
+    it('should get a list of the missing modules when moduel is from git before anything is installed', function(done){
+      npm_install_missing.getMissing(process.cwd(), function(data){
+        assert.that(data[0][0], is.equalTo('npm-install-missing'));
+        assert.that(data[0][1], is.equalTo('git+https://github.com/AlexCline/npm-install-missing.git'));
+        missing_mods = data;
+        done();
+      });
+    });
+  });
+
+
+  describe('#installModule', function(){
+    it('should install the test_dependency module', function(done){
+      npm_install_missing.installModule(missing_mods[0], function(err, result){
+        assert.that(result.length, is.greaterThan(1));
+        done();
+      });
+    });
+  });
+});
